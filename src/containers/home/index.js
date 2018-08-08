@@ -15,8 +15,6 @@ class HomeVisual extends Component {
   render() {
     const {counter,add,quit,data} = this.props;
 
-    console.log(data);
-
     return <div>
       <h1>Home</h1>
       <p>Count: {counter}</p>
