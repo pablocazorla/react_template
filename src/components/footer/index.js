@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {  Link } from 'react-router-dom'
+import {  Link } from 'react-router-dom';
+import I18N from '../../I18N';
 
 export default class Footer extends Component {
   // constructor(props) {
@@ -13,8 +14,8 @@ export default class Footer extends Component {
   render() {
     return <footer>
       <h2>Footer</h2>
-      <Link to="/">Home</Link>
-      <Link to="/about-us">About</Link>
+      <Link to="/"><I18N id="Home"/></Link>
+      <Link to="/about-us"><I18N id="About"/></Link>
     </footer>;
   }
 };
