@@ -4,12 +4,18 @@ import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from './modules'
 
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './modules/sagas'
+
 export const history = createHistory()
+
+const sagaMiddleware = createSagaMiddleware()
 
 const initialState = {}
 const enhancers = []
 const middleware = [
   thunk,
+  sagaMiddleware,
   routerMiddleware(history)
 ]
 
@@ -31,5 +37,7 @@ const store = createStore(
   initialState,
   composedEnhancers
 )
+
+sagaMiddleware.run(rootSaga)
 
 export default store;
