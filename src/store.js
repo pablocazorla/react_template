@@ -2,10 +2,9 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
-import rootReducer from './modules'
-
 import createSagaMiddleware from 'redux-saga'
-import rootSaga from './modules/sagas'
+import rootReducer from './redux/reducers'
+import rootSaga from './redux/sagas'
 
 export const history = createHistory()
 

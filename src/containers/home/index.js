@@ -1,48 +1,80 @@
-import React from 'react'
-import { push } from 'connected-react-router'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import {
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync
-} from '../../modules/counter'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import actions from '../../redux/home/actions';
 
-const Home = props => (
-  <div>
-    <h1>Home</h1>
-    <p>Count: {props.count}</p>
+class HomeVisual extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {}    
+  // }
+  // componentWillReceiveProps (nextProps) {
+  // }
+  componentDidMount () {
+    this.props.fetchData();
+  }
+  render() {
+    const {counter,add,quit,data} = this.props;
 
-    <p>
-      <button onClick={props.increment}>Increment</button>
-      <button onClick={props.incrementAsync} disabled={props.isIncrementing}>Increment Async</button>
-    </p>
+    console.log(data);
 
-    <p>
-      <button onClick={props.decrement}>Decrementing</button>
-      <button onClick={props.decrementAsync} disabled={props.isDecrementing}>Decrement Async</button>
-    </p>
+    return <div>
+      <h1>Home</h1>
+      <p>Count: {counter}</p>
 
-    <p><button onClick={() => props.changePage()}>Go to about page via redux</button></p>
-  </div>
-)
+      <p>
+        <button onClick={()=>{add(3)}}>Increment</button>
+      </p>
 
-const mapStateToProps = ({ counter }) => ({
-  count: counter.count,
-  isIncrementing: counter.isIncrementing,
-  isDecrementing: counter.isDecrementing
-})
+      <p>
+        <button onClick={()=>{quit(2)}}>Decrementing</button>
+      </p>
+      {data.length === 0 ? 'LOADING' : <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((d,k) => {
+            return <tr key={k}>
+              <td>{d.id}</td><td>{d.name}</td>
+            </tr>;
+          })}          
+        </tbody>
+      </table>}
+    </div>
+  }
+};
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync,
-  changePage: () => push('/about-us')
-}, dispatch)
+/* REDUX ***************************/
 
-export default connect(
+const {  
+  add,
+  quit,
+  fetchData
+} = actions;
+
+function mapStateToProps(state) {
+  const {counter,data} = state.Home;
+  return {counter,data};
+}
+const mapDispatchToProps = dispatch => {
+	return {
+    fetchData: () => {
+      dispatch(fetchData())
+    },
+    add: (num) => {
+      dispatch(add(num))
+    },
+    quit: (num) => {
+      dispatch(quit(num))
+    }
+	}
+}
+
+const Home = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(HomeVisual);
+
+export default Home;
