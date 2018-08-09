@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { actName } from './actions';
+import {defaultLanguage} from '../../config';
 
 let reducers = {};
 
@@ -8,7 +9,7 @@ reducers.language = (state, action) => {
     case actName.SET_LANG:        
       return action.lang;
     default:
-      return state || 'en';
+      return state || defaultLanguage;
   }
 };
 

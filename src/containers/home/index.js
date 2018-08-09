@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../redux/home/actions';
+import Helmet from '../../components/helmet';
+
 
 class HomeVisual extends Component {
   // constructor(props) {
@@ -16,6 +18,7 @@ class HomeVisual extends Component {
     const {counter,add,quit,data} = this.props;
 
     return <div>
+      <Helmet id="home"/>
       <h1>Home</h1>
       <p>Count: {counter}</p>
 
