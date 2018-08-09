@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../redux/app/actions';
-import {  Link } from 'react-router-dom';
+import Link from '../../components/link';
 import Logo from '../../images/logo.svg';
 import I18N from '../../I18N';
 
@@ -26,7 +26,7 @@ class HeaderVisual extends Component {
       <img src={Logo} alt="Logo" width="50"/>
       <br/>
       <Link to="/"><I18N id="Home"/></Link>
-      <Link to="/about-us"><I18N id="About"/></Link>
+      <Link to="about"><I18N id="About"/></Link>
       <div>
         Switch Lang:&nbsp;&nbsp;&nbsp;
         <span
