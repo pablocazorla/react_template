@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../redux/home/actions';
 import Helmet from '../../components/helmet';
-import { DatePicker,Button } from 'antd';
 
 
 class HomeVisual extends Component {
@@ -22,8 +21,6 @@ class HomeVisual extends Component {
       <Helmet id="home"/>
       <h1>Home</h1>
 	  <div>
-		<DatePicker/>
-		<Button type="primary">Aceptar</Button>
 	  </div>
       <p>Count: {counter}</p>
 
