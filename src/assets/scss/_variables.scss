@@ -1,0 +1,32 @@
+// FONT
+$font-family: "Lato", serif;
+$font-alt: "Montserrat", sans-serif;
+
+// COLOR
+$text-color: #333;
+$primary-color: rgb(250, 85, 0);
+
+$bg-color: #eee;
+
+$header-bg: #222;
+
+// Form
+$input-border-color: #ddd;
+$input-border-radius: 3px;
+$input-pt: 6px;
+$input-px: 15px;
+$input-lh: 20px;
+$input-font-size: 15px;
+$input-min-h: 2 * $input-pt + $input-lh + 2px;
+$imput-mb: $input-lh;
+
+$button-bg-color: $primary-color;
+$button-color: #fff;
+
+$header-h: 50px;
+
+$border-radius: 5px;
+
+// Media queries
+$break_mobile: 700px;
+$break_tablet: 950px;

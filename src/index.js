@@ -1,22 +1,18 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
-import registerServiceWorker from './registerServiceWorker';
-import store, { history } from './redux/store';
-import App from './containers/app';
-import './less/index.less'
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import reducers from "rdx/reducers";
+import "assets/css/font-awesome.min.css";
+import "assets/scss/index.scss";
+import App from "views/App";
 
-const target = document.querySelector('#root')
+let store = createStore(reducers, applyMiddleware(thunk));
 
-render(
+ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div>
-        <App />
-      </div>
-    </ConnectedRouter>
+    <App />
   </Provider>,
-  target
+  document.getElementById("root")
 );
-registerServiceWorker();
